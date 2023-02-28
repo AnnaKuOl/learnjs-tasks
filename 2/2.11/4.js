@@ -1,0 +1,1 @@
+alert( alert(1) && alert(2) );// введет 1, а потом undefined
