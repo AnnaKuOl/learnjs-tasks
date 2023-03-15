@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Найдите координаты точек относительно окна браузера</title>
+    <link rel="stylesheet" href="index.css">
+    <script>
+      document.onclick = function(e) { // показывает координаты точки клика
+        coords.innerHTML = e.clientX + ':' + e.clientY;
+      };
+    </script>
+</head>
+<body>
+    Кликните в любом месте для получения координат в контексте окна.
+    <br> Это для тестирования, чтобы проверить результат, который вы получили с помощью JavaScript.
+    <br>
+    <div id="coords">(координаты покажутся здесь)</div>
+  
+  
+    <div id="field">
+      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    </div>
+  
+  
+    <div class="triangle-right" style="left:-20px;top:-176px">1</div>
+    <div class="triangle-right" style="left:-10px;top:-178px">3</div>
+    <div class="triangle-right" style="left:190px;top:-40px">4</div>
+    <div class="triangle-right" style="left:200px;top:-42px">2</div>
+  
+  
+    <script>
+        let coordinate = field.getBoundingClientRect();
+        let answer1 = [coordinate.left, coordinate.top];
+        console.log('answer1: ', answer1);
+        let answer2 = [coordinate.right, coordinate.bottom];
+        console.log('answer2: ', answer2);
+        let answer3 = [coordinate.left + field.clientLeft, coordinate.top + field.clientTop];
+        console.log('answer3 : ', answer3 );
+        let answer4 = [coordinate.left + field.clientLeft + field.clientWidth, coordinate.top + field.clientTop + field.clientHeight];
+        console.log('answer4: ', answer4);
+
+
+    </script>
+  
+</body>
+</html>

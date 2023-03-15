@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цветные часы с использованием setInterval</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="clock">
+            <span class="hours">23</span>:
+            <span class="minutes">59</span>:
+            <span class="seconds">00</span>
+        </div>
+        <div class="buttons">
+            <button class="start">Start</button>
+            <button class="stop">Stop</button>
+        </div>
+    </div>
+
+    <script>
+        const start = document.querySelector('.start');
+        const stop = document.querySelector('.stop');
+        const hours = document.querySelector('.hours');
+        const minutes = document.querySelector('.minutes');
+        const seconds = document.querySelector('.seconds');
+        console.log(seconds.textContent);
+        function changeTime(){
+            let sec = +seconds.textContent; 
+            let min = +minutes.textContent; 
+            let hour = +hours.textContent;
+            sec++;
+            seconds.textContent = sec < 10 ? `0${sec}`: sec;
+            if (seconds.textContent >= 60) {
+                seconds.textContent = '00';
+                minutes.textContent = min < 9 ? `0${min + 1}` : (min + 1);
+            }
+            if (minutes.textContent >= 60) {
+                minutes.textContent = '00';
+                hours.textContent = hour < 9 ? `0${hour + 1}` : (hour + 1);;
+            } 
+            if (hours.textContent  == 24){
+                seconds.textContent = '00';
+                minutes.textContent = '00';
+                hours.textContent = '00';
+            }
+        }
+        let timerId;
+        function timer(){
+            timerId = setInterval(changeTime, 100)
+        }
+        start.addEventListener('click', timer);
+        stop.addEventListener('click', () => {
+            clearInterval(timerId);
+        })
+    </script>
+</body>
+</html>
