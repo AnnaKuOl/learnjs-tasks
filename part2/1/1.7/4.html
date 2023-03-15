@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создайте список</title>
+</head>
+<body>
+    <script>
+        let pointEnd = true;
+        while(pointEnd){
+            let text = prompt("Введите пункт списка", '');
+            let ul = document.createElement('ul');
+            document.body.append(ul);
+            if(text){
+                let li = document.createElement('li');
+                li.textContent = text;
+                ul.append(li);
+            }
+            if(text==="" || text === null){
+                pointEnd = false;
+            }
+        }
+        
+    </script>
+</body>
+</html>
