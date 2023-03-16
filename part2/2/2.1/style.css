@@ -1,0 +1,55 @@
+.arrow {
+    padding: 0;
+    background: #ddd;
+    border-radius: 15px;
+    border: 1px solid gray;
+    font-size: 24px;
+    line-height: 24px;
+    color: #444;
+    display: block;
+    position: absolute;
+    top: 67px;
+}
+.left {
+    left: 5px;
+}
+.right {
+    right: 5px;
+}
+.arrow:focus {
+    outline: none;
+}
+
+.arrow:hover {
+    background: #ccc;
+    cursor: pointer;
+}
+
+ul {
+    height: 130px;
+    width: 9999px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+    display: flex;
+}
+
+ul img {
+    width: 130px;
+    height: 130px;
+    display: block;
+}
+.wrapper{
+    width: 390px;
+    background-color: #e4e0e0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    position: relative;
+    padding: 15px 30px;
+
+}
+.gallery{
+    width: 390px;
+    overflow: hidden;
+}

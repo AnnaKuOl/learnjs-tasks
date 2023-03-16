@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать раскрывающееся меню</title>
+    <style>
+        .downArrow{
+            color: green
+        }
+        .rightArrow{
+            color: green
+        }
+        .invisible{
+            display: none;
+        }
+        .text{
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <span class="rightArrow">▶</span> 
+    <span class="downArrow invisible">▼</span> 
+    <span class="text">Сладости (нажми меня)!</span>
+    <ul class="menu invisible">
+        <li>Пирожное</li>
+        <li>Пончик</li>
+        <li>Мёд</li>
+    </ul>
+    <script>
+        const rightArrow = document.querySelector('.rightArrow');
+        const downArrow = document.querySelector('.downArrow');
+        const menu = document.querySelector('.menu');
+        const text = document.querySelector('.text');
+        text.addEventListener('click', () => {
+            rightArrow.classList.toggle('invisible');
+            downArrow.classList.toggle('invisible');
+            menu.classList.toggle('invisible');
+        })
+
+
+    </script>
+</body>
+</html>

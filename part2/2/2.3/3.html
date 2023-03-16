@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сортируемая таблица</title>
+    <style>
+        table {
+           border-collapse: collapse;
+         }
+         th, td {
+           border: 1px solid black;
+           padding: 4px;
+         }
+         th {
+           cursor: pointer;
+         }
+         th:hover {
+           background: yellow;
+         }
+      </style>
+</head>
+<body>
+    <table id="grid">
+        <thead>
+          <tr>
+            <th data-type="number">Возраст</th>
+            <th data-type="string">Имя</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>5</td>
+            <td>Вася</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Петя</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Ярослав</td>
+          </tr>
+          ...
+        </tbody>
+      </table>
+      <script>
+        grid.addEventListener('click', (event) => {
+            if(event.target.tagName !="TH"){
+                return;
+            }
+            function sortedTable(cellNumber, type) {
+                let tBody = grid.querySelector('tbody');
+                let trArray = [...tBody.rows];
+                let sortedRows;
+                if ( type == 'number') {
+                    sortedRows = trArray.sort((rowA, rowB) => rowA.cells[cellNumber].innerHTML - rowB.cells[cellNumber].innerHTML)
+                }
+                if( type == 'string'){
+                    sortedRows = trArray.sort((rowA, rowB) => rowA.cells[cellNumber].innerHTML > rowB.cells[cellNumber].innerHTML ? 1 : -1);
+                }
+                tBody.append(...sortedRows);
+            }
+            sortedTable(event.target.cellIndex, event.target.dataset.type);
+        })
+      </script>
+</body>
+</html>
