@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отследить одновременное нажатие</title>
+</head>
+<body>
+    <p>Нажмите "Q" и "W" вместе (язык значения не играет).</p>
+    <script>
+        function runOnKeys(func, ...args){
+            let pressedKeys = new Set();
+            document.addEventListener('keydown', (event) => {
+                pressedKeys.add(event.code);
+                for (let arg of args) {
+                    if (!pressedKeys.has(arg)) {
+                    return;
+                    }
+                }
+                pressedKeys.clear();
+                func();
+            })
+            document.addEventListener('keyup', (event) => {
+                pressedKeys.delete(event.code);
+            });
+        }
+        runOnKeys(
+            () => alert("Привет!"),
+            "KeyQ",
+            "KeyW"
+);
+
+    </script>
+</body>
+</html>
